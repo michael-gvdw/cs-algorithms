@@ -32,10 +32,14 @@ class Array(object):
 class Queue(Array):
     
     # remove an item at index 0
-    def pop(self):
-        if not self.is_empty():
-            return self.array.pop(0)
+    def enqueue(self, item):
+        self.push(item)
+
     
+    def dequeue(self):
+         if not self.is_empty():
+            return self.array.pop(0)
+
     def peek(self):
         if not self.is_empty():
             return self.array[0]

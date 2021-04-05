@@ -44,8 +44,28 @@ class BinaryTree(object):
         if node is None:
             return 0
         return 1 + self.size(node.left) + self.size(node.right)
-    
 
+    def has_bst_property(self):
+        if self.root:
+            is_satisfied = self._has_bst_property(self.root, self.root.value)
+
+            if is_satisfied is None:
+                return True
+            return False
+        return True
+    
+    def _has_bst_property(self, current_node, value):
+        if current_node.left:
+            if value > current_node.left.value:
+                return self._has_bst_property(current_node.left, current_node.left.value)
+            else:
+                return False
+        if current_node.right:
+            if value < current_node.right.value:
+                return self._has_bst_property(current_node.right, current_node.right.value)
+            else:
+                return False
+                
     def print_tree(self, mode='inorder'):
         if mode == 'preorder':
             return self._preorder(self.root, "")
@@ -53,6 +73,8 @@ class BinaryTree(object):
             return self._postorder(self.root, "")
         if mode == 'levelorder':
             return self._levelorder(self.root)
+        if mode == 'levelorder-reverse':
+            return self._levelorder_reverse(self.root)
 
         return self._inorder(self.root, "")
 
@@ -85,24 +107,47 @@ class BinaryTree(object):
             return
 
         queue = Queue()
-        queue.push(node)
+        queue.enqueue(node)
         
         traversal = ""
-
         while len(queue) > 0:
             traversal += str(queue.peek().value) + " "
-            node = queue.pop()
+            node = queue.dequeue()
 
             if node.left:
-                queue.push(node.left)
+                queue.enqueue(node.left)
             if node.right:
-                queue.push(node.right)
+                queue.enqueue(node.right)
 
         return traversal
+    
+    def _levelorder_reverse(self, node):
+        if node is None:
+            return
 
-# # simple binary tree
-# class BinaryTree(Tree):
-#     pass
+        queue = Queue()
+        stack = Stack()
+
+        queue.enqueue(node)
+
+        traversal = ""
+        while len(queue) > 0:
+            node = queue.dequeue()
+            print(node.value)
+            stack.push(node)
+
+            if node.right:
+                queue.enqueue(node.right)
+            if node.left:
+                queue.enqueue(node.left)
+            
+        while len(stack) > 0:
+            node = stack.pop()
+            traversal += str(node.value) + " "
+        
+        return traversal
+        
+
 
 
 # binary search tree
@@ -242,9 +287,11 @@ binary.root.left = Node(2)
 binary.root.right = Node(3)
 binary.root.left.left = Node(4)
 binary.root.left.right = Node(5)
+
+print(binary.has_bst_property())
 print(binary.size(binary.root))
 print(binary.height(binary.root))
-print(binary.print_tree(mode='levelorder'))
+print(binary.print_tree(mode='levelorder-reverse'))
 
 print()
 
@@ -256,9 +303,10 @@ tree.insert(10)
 tree.insert(9)
 tree.insert(11)
 
+print(tree.has_bst_property())
 print(tree.size(tree.root))
 print(tree.height(tree.root))
-print(tree.print_tree())
+print(tree.print_tree(mode='levelorder-r'))
 
 tree.delete_value(5)
 print(tree.print_tree())
