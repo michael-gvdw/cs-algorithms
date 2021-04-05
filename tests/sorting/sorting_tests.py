@@ -1,7 +1,6 @@
 import pytest
 import importlib
 
-
 from ...src.algorithms.sorting import is_sorted
 
 
