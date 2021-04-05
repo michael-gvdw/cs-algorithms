@@ -73,8 +73,8 @@ class BinaryTree(object):
             return self._postorder(self.root, "")
         if mode == 'levelorder':
             return self._levelorder(self.root)
-        if mode == 'levelorder-reverse':
-            return self._levelorder_reverse(self.root)
+        # if mode == 'levelorder-reverse':
+        #     return self._levelorder_reverse(self.root)
 
         return self._inorder(self.root, "")
 
@@ -121,31 +121,31 @@ class BinaryTree(object):
 
         return traversal
     
-    def _levelorder_reverse(self, node):
-        if node is None:
-            return
+    # def _levelorder_reverse(self, node):
+    #     if node is None:
+    #         return
 
-        queue = Queue()
-        stack = Stack()
+    #     queue = Queue()
+    #     stack = Stack()
 
-        queue.enqueue(node)
+    #     queue.enqueue(node)
 
-        traversal = ""
-        while len(queue) > 0:
-            node = queue.dequeue()
-            print(node.value)
-            stack.push(node)
+    #     traversal = ""
+    #     while len(queue) > 0:
+    #         node = queue.dequeue()
+    #         print(node.value)
+    #         stack.push(node)
 
-            if node.right:
-                queue.enqueue(node.right)
-            if node.left:
-                queue.enqueue(node.left)
+    #         if node.right:
+    #             queue.enqueue(node.right)
+    #         if node.left:
+    #             queue.enqueue(node.left)
             
-        while len(stack) > 0:
-            node = stack.pop()
-            traversal += str(node.value) + " "
+    #     while len(stack) > 0:
+    #         node = stack.pop()
+    #         traversal += str(node.value) + " "
         
-        return traversal
+    #     return traversal
         
 
 

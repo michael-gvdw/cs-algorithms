@@ -32,5 +32,8 @@ Python package with common sorting algorithms and data structures
         It picks an element as pivot and partitions the given array around the picked pivot. 
         
 * Data Structures:
-    * None
+    * Queue
+    * Stack
+    * BinaryTree
+    * BinarySearchTree
 
