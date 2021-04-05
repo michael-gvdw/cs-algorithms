@@ -1,5 +1,6 @@
 ''''
 Title: is_sorted.
+Complexity: O(n)
 
 Description:
     Check if a given array is sorted. 
@@ -7,7 +8,9 @@ Description:
     return False if not sorted.
 ''''
 def is_sorted(arr):
-    return all(l[i] <= l[i+1] for i in range(len(l)-1))
+    if arr[0] < arr[-1]:
+        return all([arr[i-1] <= arr[i] for i in range(1, len(arr))])
+    return all([arr[i-1] >= arr[i] for i in range(1, len(arr))])
 
 
 ''''
@@ -104,8 +107,8 @@ def insertion_sort(arr):
             arr[j+1] = arr[j]
             j -= 1
         arr[j+1] = key
-    
-            
+
+
 ''''
 Title: merge_sort
 Complexity: O(n*log(n))
