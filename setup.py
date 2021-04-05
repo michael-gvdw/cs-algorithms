@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="cs-algorithms", 
+    name="cs-algorithms", # Replace with your own username
     version="0.0.3",
     author="Michael Groenewegen van der Weijden",
     author_email="",
@@ -13,8 +13,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/michael-gvdw/cs-algorithms.git",
     project_urls={
-        "Linkedin": ""
         "GitHub": "https://github.com/michael-gvdw/cs-algorithms.git",
+        "Linkedin": "https://www.linkedin.com/in/michael-groenewegen-van-der-weijden-4234b9206/",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
