@@ -1,4 +1,4 @@
-''''
+'''
 Title: is_sorted.
 Complexity: O(n)
 
@@ -6,20 +6,20 @@ Description:
     Check if a given array is sorted. 
     return True if sorted.
     return False if not sorted.
-''''
+'''
 def is_sorted(arr):
     if arr[0] < arr[-1]:
         return all([arr[i-1] <= arr[i] for i in range(1, len(arr))])
     return all([arr[i-1] >= arr[i] for i in range(1, len(arr))])
 
 
-''''
+'''
 Title: bubble_sort_original. 
 Complexity: O(n^2).
 
 Description: 
     Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
-''''
+'''
 def bubble_sort_original(arr):
     # Traverse through all array elements
     for i in range(len(arr)):
@@ -32,13 +32,13 @@ def bubble_sort_original(arr):
                 arr[j-1], arr[j] = arr[j], arr[j-1]
 
 
-''''
+'''
 Title: bubble_sort_improved. 
 Complexity: O(n^2).
 
 Description: 
     Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
-''''
+'''
 def bubble_sort_optimized(arr):
     is_sorted = False
     # Traverse through all array elements
@@ -56,7 +56,7 @@ def bubble_sort_optimized(arr):
                 arr[j-1], arr[j] = arr[j], arr[j-1]
 
 
-''''
+'''
 Title: selection_sort. 
 Complexity: O(n^2).
 
@@ -68,7 +68,7 @@ Description:
     2) Remaining subarray which is unsorted.
 
     In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
-''''
+'''
 def selection_sort(arr):
     # Traverse through all array elements
     for i in range(1, len(arr)):
@@ -81,7 +81,7 @@ def selection_sort(arr):
         arr[i-1], arr[index_min] = arr[index_min], arr[i-1]
 
 
-''''
+'''
 Title: insertion_sort
 Complexity: O(n*2) 
 
@@ -94,7 +94,7 @@ Description:
     1: Iterate from arr[1] to arr[n] over the array. 
     2: Compare the current element (key) to its predecessor. 
     3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.
-''''
+'''
 def insertion_sort(arr):
     # Traverse through 1 to len(arr)
     for i in range(1, len(arr)):
@@ -109,14 +109,14 @@ def insertion_sort(arr):
         arr[j+1] = key
 
 
-''''
+'''
 Title: merge_sort
-Complexity: O(n*log(n))
+Complexity: O(n*log n)
 
 Description:
     Like QuickSort, Merge Sort is a Divide and Conquer algorithm. 
     It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. 
-''''
+'''
 def merge_sort(arr):
     if len(arr) > 1:
         # Finding the mid of the array
@@ -155,9 +155,9 @@ def merge_sort(arr):
             k += 1
 
 
-''''
+'''
 Title: quick_sort.
-Complexity: O(n log(n))
+Complexity: O(n log n)
 
 Description:
     Like Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. 
@@ -170,9 +170,9 @@ Description:
 
     The key process in quickSort is partition(). Target of partitions is, given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. 
     All this should be done in linear time. 
-''''
+'''
 def quick_sort(arr):
-    def _inner_quick_sort(arr, low=0, high=):
+    def _quick_sort(arr, low=0, high=len(arr)-1):
 
 def _partition(arr, low, high):
     i = (low-1)  # index of smaller element
@@ -188,7 +188,7 @@ def _partition(arr, low, high):
     arr[i+1], arr[high] = arr[high], arr[i+1]
     return (i+1)
 
-def _inner_quick_sort(arr, low, high):
+def _quick_sort(arr, low, high):
         if len(arr) == 1:
             return arr
         if low < high:
@@ -196,6 +196,6 @@ def _inner_quick_sort(arr, low, high):
             partition_index = _partition(arr, low, high)
             # Separately sort elements before
             # partition and after partition
-            _inner_quick_sort(arr, low, partition_index-1)
-            _inner_quick_sort(arr, partition_index+1, high)
+            _quick_sort(arr, low, partition_index-1)
+            _quick_sort(arr, partition_index+1, high)
         
