@@ -217,3 +217,71 @@ def fibonacci_search(arr, y):
     # element not found. return -1
     return -1
 
+
+'''
+Title: ternary_search
+Complexity: O(log3 n)
+
+Description:
+    Ternary search is a divide and conquer algorithm that can be used to find an element in an array. 
+    It is similar to binary search where we divide the array into two parts but in this algorithm, 
+    we divide the given array into three parts and determine which has the key.
+'''
+def ternary_search(arr, y, lower=None, upper=None):
+    if not lower:
+        lower = 0
+    if not upper:
+        upper = len(arr) - 1
+
+    while upper >= lower:
+        # Find mid1 and mid2
+        mid1 = lower + (upper-lower)//3 
+        mid2 = upper – (upper-lower)//3 
+        # Check if key is at any mid
+        if arr[mid1] == y:
+            return mid1
+        if arr[mid2] == y:
+            return mid2
+        # Since key is not present at mid,
+        # Check in which region it is present
+        # Then repeat the search operation in that region
+        if arr[mid1] > y:
+            # key lies between lower and mid1
+            upper = mid1 - 1
+        elif arr[mid2] < y:
+            # key lies between mid2 and upper
+            lower = mid2 + 1
+        else:
+            # key lies between mid1 and mid2
+            lower = mid1 + 1
+            upper = mid2 - 1
+    # key not found
+    return -1
+
+def ternary_search_recursive(arr, y):
+    return _ternary_search_recursive(arr, y, 0, len(arr)-1)
+
+def _ternary_search_recursive(arr, y, lower, upper):
+    if upper >= lower:
+        # Find mid1 and mid2
+        mid1 = lower + (upper-lower)//3 
+        mid2 = upper – (upper-lower)//3 
+        # Check if key is at any mid
+        if arr[mid1] == y:
+            return mid1
+        if arr[mid2] == y:
+            return mid2
+        # Since key is not present at mid,
+        # Check in which region it is present
+        # Then repeat the search operation in that region
+        if arr[mid1] > y:
+            # key lies between lower and mid1
+            return _ternary_search_recursive(arr, y, lower, mid1 - 1)
+        elif arr[mid2] < y:
+            # key lies between mid2 and upper
+            return _ternary_search_recursive(arr, y, mid2 + 1, upper)
+        else:
+            # key lies between mid1 and mid2
+            return _ternary_search_recursive(arr, y, mid1 + 1, mid2 - 1)
+    # Key not found
+    return -1

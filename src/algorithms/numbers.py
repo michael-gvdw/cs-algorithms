@@ -18,4 +18,21 @@ def fibonacci(n):
     if n == 1 or n == 2:
         return 1
     return fibonacci(n-1) + fibonacci(n-2)
+
+
+'''
+Title: factorial
+Complexity: O(n)
+
+Description:
+    In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n:
+    n!=n * (n-1) * (n-2) * (n-3) ... * 3 * 2 * 1
+
+    For example,
+    5!=5 * 4 * 3 * 2 * 1 = 120
+'''
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n-1)
     

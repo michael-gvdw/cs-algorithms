@@ -33,7 +33,7 @@ def bubble_sort_original(arr):
 
 
 '''
-Title: bubble_sort_improved. 
+Title: bubble_sort_optimized. 
 Complexity: O(n^2).
 
 Description: 
