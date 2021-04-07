@@ -15,7 +15,9 @@ The main goal is to familiarize with common Algorithms and Data Structures. Folo
             -> sequence.py
             -> tree.py
 
+## Instalation
 
+    pip install cs-algorithms
 
 # Currently Implemented
 

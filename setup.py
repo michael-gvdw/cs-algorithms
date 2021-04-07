@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="cs-algorithms", # Replace with your own username
-    version="0.0.6",
+    version="0.0.7",
     author="Michael Groenewegen van der Weijden",
     author_email="",
     description="Sorting Algorithms & Data Structures",
@@ -23,5 +23,5 @@ setuptools.setup(
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
-    python_requires=">=3.6",
+    python_requires=">=3.8",
 )
