@@ -61,6 +61,3 @@ def test_binary_insertion_sort():
     unsorted_list_cp = unsorted_list[:]
     temp = binary_insertion_sort(unsorted_list_cp)
     assert is_sorted(temp)
-
-def test_foo():
-    assert False
