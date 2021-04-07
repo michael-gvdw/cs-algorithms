@@ -39,7 +39,7 @@ def binary_search(arr, y, lower=None, upper=None):
         lower = 0
     if not upper:
         upper = len(arr) - 1
-    
+
     while lower <= upper:
         mid = lower + (upper - lower) // 2
         # Check if x is present at mid
@@ -54,6 +54,8 @@ def binary_search(arr, y, lower=None, upper=None):
     # If we reach here, then the element
     # was not present
     return -1
+
+
 
 def binary_search_recursive(arr, y, lower=None, upper=None):
     if not lower:
@@ -76,6 +78,7 @@ def _binary_search_recursive(arr, y, lower, upper):
             return _binary_search_recursive(arr, y, lower, mid-1)
     else:
         return -1
+    
 
 '''
 Title: jump_start

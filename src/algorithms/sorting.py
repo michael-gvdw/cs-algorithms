@@ -1,3 +1,5 @@
+from .search import binary_search_recursive
+
 '''
 Title: is_sorted.
 Complexity: O(n)
@@ -209,4 +211,43 @@ def _quick_sort(arr, low, high):
         # partition and after partition
         _quick_sort(arr, low, partition_index-1)
         _quick_sort(arr, partition_index+1, high)
-    
+
+
+'''
+Title: binary_insertion_sort
+Complexity: O(log n)
+
+Description: 
+    Binary Insertion Sort uses binary search to find the proper location to insert the selected item at each iteration. 
+'''
+def binary_insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = _binary_search_insertion_sort(arr, key, lower=0, upper=i-1)
+        arr = arr[:j] + [key] + arr[j:i] + arr[i+1:]
+    return arr
+
+def _binary_search_insertion_sort(arr, y, lower, upper):
+    # we need to distinugish whether we should insert
+    # before or after the left boundary.
+    # imagine [0] is the last step of the binary search
+    # and we need to decide where to insert -1
+    if lower == upper:
+        if arr[lower] > y:
+            return lower
+        else:
+            return lower+1
+  
+    # this occurs if we are moving beyond left\'s boundary
+    # meaning the left boundary is the least position to
+    # find a number greater than val
+    if lower > upper:
+        return lower
+  
+    mid = (lower+upper)//2
+    if arr[mid] < y:
+        return _binary_search_insertion_sort(arr, y, mid+1, upper)
+    elif arr[mid] > y:
+        return _binary_search_insertion_sort(arr, y, lower, mid-1)
+    else:
+        return mid

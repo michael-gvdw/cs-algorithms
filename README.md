@@ -8,7 +8,7 @@ The main goal is to familiarize with common Algorithms and Data Structures. Folo
 ## File Structure
 
     algorithms/
-        -> numbers.py
+        -> number.py
         -> search.py
         -> sorting.py
         data_strucutes/
@@ -182,6 +182,19 @@ It picks an element as pivot and partitions the given array around the picked pi
 [Wikipedia](https://en.wikipedia.org/wiki/Quicksort)
 
 [GeeksforGeeks](https://www.geeksforgeeks.org/quick-sort/)
+
+### Binary Insertion Sort
+Binary Insertion Sort uses binary search to find the proper location to insert the selected item at each iteration.
+
+#### Code Example
+
+    >>> from algorithms.sorting import binary_insertion_sort
+
+    >>> arr = [5, 2, 3, 6, 1, 4, 8, 9, 7]
+    >>> arr = binary_insertion_sort(arr)
+    >>> print(arr)
+
+    output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 ## Search Algorithms:
 

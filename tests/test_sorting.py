@@ -3,7 +3,8 @@ import importlib
 
 
 from src.algorithms.sorting import (is_sorted, bubble_sort_original, bubble_sort_optimized, 
-                                    selection_sort, insertion_sort, merge_sort, quick_sort)
+                                    selection_sort, insertion_sort, merge_sort, quick_sort, 
+                                    binary_insertion_sort)
 
 
 unsorted_list = [8, 3, 5, 1, 2, 9, 4, 6, 7]
@@ -55,3 +56,11 @@ def test_quick_sort():
     unsorted_list_cp = unsorted_list[:]
     quick_sort(unsorted_list_cp)
     assert is_sorted(unsorted_list_cp)
+
+def test_binary_insertion_sort():
+    unsorted_list_cp = unsorted_list[:]
+    temp = binary_insertion_sort(unsorted_list_cp)
+    assert is_sorted(temp)
+
+def test_foo():
+    assert False
