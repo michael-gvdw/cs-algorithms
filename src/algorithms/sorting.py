@@ -8,6 +8,8 @@ Description:
     return False if not sorted.
 '''
 def is_sorted(arr):
+    if len(arr) <= 1:
+        return True
     if arr[0] < arr[-1]:
         return all([arr[i-1] <= arr[i] for i in range(1, len(arr))])
     return all([arr[i-1] >= arr[i] for i in range(1, len(arr))])
@@ -21,6 +23,8 @@ Description:
     Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
 '''
 def bubble_sort_original(arr):
+    if is_sorted(arr):
+        return
     # Traverse through all array elements
     for i in range(len(arr)):
         # Last i elements are already in place
@@ -40,20 +44,23 @@ Description:
     Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
 '''
 def bubble_sort_optimized(arr):
-    is_sorted = False
+    if is_sorted(arr):
+        return
+    swapped = False
     # Traverse through all array elements
     i = 0 
-    while not is_sorted and i < len(arr):
-        is_sorted = True        
+    while not swapped and i < len(arr):
+        swapped = True        
         # Last i elements are already in place
-        for j in range(len(arr)):
+        for j in range(1, len(arr) - i):
             # traverse the array from 0 to
             # n-i-1. Swap if the element 
             # found is greater than the
             # next element
             if arr[j-1] > arr[j]:
-                is_sorted = False
+                swapped = False
                 arr[j-1], arr[j] = arr[j], arr[j-1]
+        i += 1
 
 
 '''
@@ -70,6 +77,8 @@ Description:
     In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
 '''
 def selection_sort(arr):
+    if is_sorted(arr):
+        return
     # Traverse through all array elements
     for i in range(1, len(arr)):
         # Find the minimum element in remaining unsorted array
@@ -96,6 +105,8 @@ Description:
     3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.
 '''
 def insertion_sort(arr):
+    if is_sorted(arr):
+        return
     # Traverse through 1 to len(arr)
     for i in range(1, len(arr)):
         key = arr[i]
@@ -172,7 +183,9 @@ Description:
     All this should be done in linear time. 
 '''
 def quick_sort(arr):
-    def _quick_sort(arr, low=0, high=len(arr)-1):
+    if is_sorted(arr):
+        return
+    _quick_sort(arr, low=0, high=len(arr)-1)
 
 def _partition(arr, low, high):
     i = (low-1)  # index of smaller element
@@ -189,13 +202,11 @@ def _partition(arr, low, high):
     return (i+1)
 
 def _quick_sort(arr, low, high):
-        if len(arr) == 1:
-            return arr
-        if low < high:
-            # partition_index is partitioning index, arr[partition_index] is now at right place
-            partition_index = _partition(arr, low, high)
-            # Separately sort elements before
-            # partition and after partition
-            _quick_sort(arr, low, partition_index-1)
-            _quick_sort(arr, partition_index+1, high)
-        
+    if low < high:
+        # partition_index is partitioning index, arr[partition_index] is now at right place
+        partition_index = _partition(arr, low, high)
+        # Separately sort elements before
+        # partition and after partition
+        _quick_sort(arr, low, partition_index-1)
+        _quick_sort(arr, partition_index+1, high)
+    

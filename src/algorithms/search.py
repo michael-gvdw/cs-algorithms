@@ -1,5 +1,6 @@
 from math import sqrt
-from numbers import fibonacci
+
+from .number import fibonacci
 
 
 '''
@@ -236,7 +237,7 @@ def ternary_search(arr, y, lower=None, upper=None):
     while upper >= lower:
         # Find mid1 and mid2
         mid1 = lower + (upper-lower)//3 
-        mid2 = upper – (upper-lower)//3 
+        mid2 = upper - (upper-lower)//3 
         # Check if key is at any mid
         if arr[mid1] == y:
             return mid1
@@ -265,7 +266,7 @@ def _ternary_search_recursive(arr, y, lower, upper):
     if upper >= lower:
         # Find mid1 and mid2
         mid1 = lower + (upper-lower)//3 
-        mid2 = upper – (upper-lower)//3 
+        mid2 = upper - (upper-lower)//3 
         # Check if key is at any mid
         if arr[mid1] == y:
             return mid1
